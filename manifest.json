@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "hide reddit posts",
+  "version": "1.0",
+  "description": "Hide Reddit posts and comments from specific authors",
+  "content_scripts": [
+    {
+      "matches": ["https://www.reddit.com/*/comments/*/"],
+      "js": ["comments.js"]
+    },
+    {
+      "matches": ["https://www.reddit.com/", "https://www.reddit.com/r/*/"],
+      "js": ["posts.js"]
+    }
+  ]
+}
