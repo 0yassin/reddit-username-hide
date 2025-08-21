@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Extension Options</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+      width: 250px;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 15px 10px;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: bold;
+    }
+
+    label:hover {
+      border: #FF5700;
+      border: 10px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+      accent-color: #FF5700;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      background-color: #FF5700;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+
+    button:active {
+      transform: translateY(0);
+
+    }
+  </style>
+</head>
+<body>
+  <h3>Settings</h3>
+  
+  <label>
+    <input type="checkbox" id="optionA">
+    Word_word_number
+  </label>
+
+  <label>
+    <input type="checkbox" id="optionB">
+    Word-word-number
+  </label>
+
+  <button id="saveBtn">Save</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>

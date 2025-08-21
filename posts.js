@@ -1,17 +1,26 @@
-const regex_test = new RegExp("^[A-Za-z]+_[A-Za-z]+_\\d+$");
-const regex_test2 = new RegExp("^[A-Za-z]+-[A-Za-z]+-\\d+$");
+const regex_test = /^[A-Za-z]+_[A-Za-z]+_\d+$/;
+const regex_test2 = /^[A-Za-z]+-[A-Za-z]+-\d+$/;
 
+function hidePostsByUser(optionA, optionB) {
+  document.querySelectorAll("shreddit-post").forEach(post => {
+    const author = post.getAttribute("author");
 
-function hidePostsByUser() {
-  document.querySelectorAll("shreddit-post").forEach(comment => {
-    const author = comment.getAttribute("author");
-    if (regex_test.test(author) || regex_test2.test(author)) {
-      comment.style.display = "none";
+    if (optionA && regex_test.test(author)) {
+      post.style.display = "none";
+    }
+
+    if (optionB && regex_test2.test(author)) {
+      post.style.display = "none";
     }
   });
 }
 
-hidePostsByUser();
+chrome.storage.sync.get(['optionA', 'optionB'], (data) => {
+  hidePostsByUser(data.optionA, data.optionB);
 
-const observer = new MutationObserver(hidePostsByUser);
-observer.observe(document.body, { childList: true, subtree: true });
+  const observer = new MutationObserver((mutationsList) => {
+    hidePostsByUser(data.optionA, data.optionB);
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+});
